@@ -5,7 +5,6 @@ const Song = require('../models/Song');
 
 const router = express.Router();
 
-// Add a new playlist
 router.post('/', async (req, res) => {
   const { name, description, songIds } = req.body;
 
@@ -23,14 +22,12 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a playlist
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { name, description, songIds } = req.body;
 
-  console.log(`Updating playlist with ID: ${id}`); // Debugging log
+  console.log(`Updating playlist with ID: ${id}`); 
 
-  // Validate the ObjectId
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ msg: 'Invalid playlist ID' });
   }
@@ -55,7 +52,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a playlist by ID
 router.delete('/:id', async (req, res) => {
   try {
     const playlist = await Playlist.findById(req.params.id);
