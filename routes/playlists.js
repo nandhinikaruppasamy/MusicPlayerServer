@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose'); // Import mongoose
+const mongoose = require('mongoose'); 
 const Playlist = require('../models/Playlist');
 const Song = require('../models/Song');
 
@@ -35,7 +35,7 @@ router.put('/:id', async (req, res) => {
   try {
     let playlist = await Playlist.findById(id);
     if (!playlist) {
-      console.log('Playlist not found in the database'); // Debugging log
+      console.log('Playlist not found in the database'); 
       return res.status(404).json({ msg: 'Playlist not found' });
     }
 
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
 
     res.json(playlist);
   } catch (err) {
-    console.error('Error updating playlist:', err); // Debugging log
+    console.error('Error updating playlist:', err); 
     res.status(500).send('Server error');
   }
 });
